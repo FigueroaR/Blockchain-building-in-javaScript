@@ -12,5 +12,8 @@ Blockchain.prototype.crateNewBlock = function(nonce, previousBlockHash, hash) {
     hash: hash,
     previousBlockHash: previousBlockHash
   }
+
+  this.newTransactions = []
+  this.chain.push(newBlock)
   return newBlock;
 }
