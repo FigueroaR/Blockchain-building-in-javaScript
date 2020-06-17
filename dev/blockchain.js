@@ -1,4 +1,4 @@
-function Blockchain () {
+function Blockchain() {
   this.chain = [];
   this.newTransactions = [];
 }
@@ -17,3 +17,5 @@ Blockchain.prototype.crateNewBlock = function(nonce, previousBlockHash, hash) {
   this.chain.push(newBlock)
   return newBlock;
 }
+
+module.exports = Blockchain;
