@@ -1,0 +1,19 @@
+{
+  "name": "blockchain-building-in-javascript",
+  "version": "1.0.0",
+  "description": "Blockchain Practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FigueroaR/Blockchain-building-in-javaScript.git"
+  },
+  "author": "R.F.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FigueroaR/Blockchain-building-in-javaScript/issues"
+  },
+  "homepage": "https://github.com/FigueroaR/Blockchain-building-in-javaScript#readme"
+}
