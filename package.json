@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/FigueroaR/Blockchain-building-in-javaScript/issues"
   },
-  "homepage": "https://github.com/FigueroaR/Blockchain-building-in-javaScript#readme"
+  "homepage": "https://github.com/FigueroaR/Blockchain-building-in-javaScript#readme",
+  "dependencies": {
+    "sha256": "^0.2.0"
+  }
 }

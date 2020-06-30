@@ -1,8 +1,17 @@
+// npm packages 
+const sha256 = require("sha256")
+/////////////////////////////////////////////
+
+
+// contructor funtion
 function Blockchain() {
   this.chain = [];
   this.pendingTransactions = [];
 }
+///////////////////////////////////////////////
 
+
+// Methods For contructor methods
 Blockchain.prototype.createNewBlock = function(nonce, previousBlockHash, hash) {
   const newBlock = {
     index: this.chain.length + 1,
@@ -33,4 +42,13 @@ Blockchain.prototype.createNewtransaction = function(amount, sender, recipient) 
   return this.getLastBlock()['index'] + 1;
 }
 
+
+Blockchain.prototype.hashBlock = function(previousBlockHash, currentBlock, nonce){
+  const dataAsString = previousBlockHash + nonce.toString() + JSON.stringify(currentBlock)
+  const hash = sha256(dataAsString)
+  return hash
+}
+///////////////////////////////////////////////////
+
+// export Blockchain contructor along wih its method
 module.exports = Blockchain;
