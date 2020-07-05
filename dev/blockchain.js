@@ -48,6 +48,18 @@ Blockchain.prototype.hashBlock = function(previousBlockHash, currentBlock, nonce
   const hash = sha256(dataAsString)
   return hash
 }
+
+Blockchain.prototype.proofOfWork = function(previousBlockHash, currentBlockData) {
+  let nonce = 0
+  let hash = this.previousBlockHash(previousBlockHash, currentBlockData, nonce)
+  while (hash.substring(0, 4) !== '0000') {
+    nonce++;
+    hash = this.hashBlock(previousBlockHash, currentBlockData, nonce)
+  }
+  return nonce;
+}
+
+
 ///////////////////////////////////////////////////
 
 // export Blockchain contructor along wih its method
