@@ -13,7 +13,7 @@ function Blockchain() {
 ///////////////////////////////////////////////
 
 
-// Methods For contructor methods
+// Methods For contructor function
 Blockchain.prototype.createNewBlock = function(nonce, previousBlockHash, hash) {
   const newBlock = {
     index: this.chain.length + 1,
