@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
 const uuid = require('uuid').v4;
+const port = process.argv[2];
 
 const nodeAddress = uuid().split('-').join('')
 
@@ -44,6 +45,6 @@ app.get('/mine', function(req, res){
     })
 })
 
-app.listen(3000, function (){
-    console.log("Listening on localhost 3000.......")
+app.listen(port, function (){
+    console.log(`Listening on localhost ${port} .....`)
 })
