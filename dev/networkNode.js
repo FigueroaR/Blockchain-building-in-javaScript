@@ -46,5 +46,5 @@ app.get('/mine', function(req, res){
 })
 
 app.listen(port, function (){
-    console.log(`Listening on localhost ${port} .....`)
+    console.log(`Listening on localhost ${port} ....`)
 })
