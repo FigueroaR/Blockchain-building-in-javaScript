@@ -66,8 +66,6 @@ Blockchain.prototype.proofOfWork = function(previousBlockHash, currentBlockData)
   }
   return nonce;
 }
-
-
 ///////////////////////////////////////////////////
 
 // export Blockchain contructor along wih its method
