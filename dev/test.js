@@ -2,4 +2,4 @@ const BlockChain = require('./blockchain'); // import blockchain.js || data stru
 
 const bitcoin = new BlockChain(); // new instance of blockchain object
 
-console.log(bitcoin)
+//console.log(bitcoin)
