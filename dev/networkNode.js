@@ -48,6 +48,23 @@ app.get('/mine', function(req, res){
 // resguster a node with the network
 app.post('/register-and-broadcast-node', function(req, res){
     const newNodeUrl = req.body.newNodeUrl;
+    if(bitcoin.networkNodes.indexOf(newNodeUrl) == -1) bitcoin.networkNodes.push(newNodeUrl)
+    const regNodesPromises = []
+    bitcoin.networkNodes.forEach( networkNodeUrl => {
+        const resquestOptions = {
+            uri: networkNodeUrl + '/resgister-node',
+            method: 'POST',
+            body: {newNodeUrl: newNodeUrl},
+            json: true
+        };
+        regNodesPromises.push(rp(resquestOptions))
+    });
+
+    Promise.all(regNodesPromises)
+    .then(data => {
+        // ..
+        // use the data
+    });
 });
 
 app.post('/resgister-node', function(req, res){
