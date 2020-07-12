@@ -46,11 +46,11 @@ Blockchain.prototype.createNewtransaction = function(amount, sender, recipient) 
     recipient: recipient,
     transactionId: uuid().split('-').join('')
   };
-  
+
   return newTransaction
 }
 
-Blockchain.prototype.addTransactionToPendingTransactions = functions(transactionObj) {
+Blockchain.prototype.addTransactionToPendingTransactions = function(transactionObj) {
   this.pendingTransactions.push(transactionObj)
   return this.getLastBlock()['index'] + 1;
 }

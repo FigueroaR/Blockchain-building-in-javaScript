@@ -34,7 +34,7 @@ app.post('/transaction/broadcast', function(req, res) {
     const requestPromises = [];
     bitcoin.networkNodes.forEach(networkNodeUrl => {
         const requestOptions = {
-            uri: networkNodeUrl + '/trnsaction',
+            uri: networkNodeUrl + '/transaction',
             method: 'POST',
             body: newTransaction,
             json: true 
@@ -50,7 +50,7 @@ app.post('/transaction/broadcast', function(req, res) {
 
 
 // mine pending trnsactions
-app.get('/mine', function(req, res){
+app.get('/mine', function(req, res) {
     const lastBlock = bitcoin.getLastBlock();
     const previousBlockHash = lastBlock['hash'];
     const currentBlockData = {
