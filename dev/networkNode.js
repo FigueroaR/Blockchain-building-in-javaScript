@@ -20,9 +20,10 @@ app.get('/blockchain', function(req, res) {
 })
 
 //create new trnsaction 
-app.post('/transaction', function(req, res){
+app.post('/transaction', function(req, res) {
     //console.log(req.body)
-    const blockIndex = bitcoin.createNewtransaction(req.body.amount, req.body.sender, req.body.recipient)
+    const newTransaction = req.body
+    const blockIndex = bitcoin.addTransactionToPendingTransactions(newTransaction)
     res.json({status: `you block index is ${blockIndex}.`})
 })
 
