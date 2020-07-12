@@ -19,12 +19,36 @@ app.get('/blockchain', function(req, res) {
     res.send(bitcoin)
 })
 
+//create new trnsaction 
 app.post('/transaction', function(req, res){
     //console.log(req.body)
     const blockIndex = bitcoin.createNewtransaction(req.body.amount, req.body.sender, req.body.recipient)
     res.json({status: `you block index is ${blockIndex}.`})
 })
 
+app.post('/transaction/broadcast', function(req, res) {
+    const newTransaction = bitcoin.createNewtransaction(req.body.amount, req.body.sender, req.body.recipient)
+    bitcoin.addTransactionToPendingTransactions(newTransaction)
+
+    const requestPromises = [];
+    bitcoin.networkNodes.forEach(networkNodeUrl => {
+        const requestOptions = {
+            uri: networkNodeUrl + '/trnsaction',
+            method: 'POST',
+            body: newTransaction,
+            json: true 
+        };
+        requestPromises.push(rp(requestOptions))
+    });
+
+    Promise.all(requestPromises)
+    .then(data => {
+        requestPromises.json({ note: "Trnsaction created and brodcasted succesfully."})
+    })
+})
+
+
+// mine pending trnsactions
 app.get('/mine', function(req, res){
     const lastBlock = bitcoin.getLastBlock();
     const previousBlockHash = lastBlock['hash'];
