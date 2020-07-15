@@ -44,7 +44,7 @@ app.post('/transaction/broadcast', function(req, res) {
 
     Promise.all(requestPromises)
     .then(data => {
-        res.json({ note: "Trnsaction created and brodcasted succesfully."})
+        res.json({ note: "Transaction created and brodcasted succesfully."})
     })
 })
 
@@ -92,7 +92,7 @@ app.get('/mine', function(req, res) {
     })
     .then( data => {
         res.json({
-            node: "new block mined",
+            node: "new block mined & brodcasted succesfully",
             block: newBlock    
         })
     })
