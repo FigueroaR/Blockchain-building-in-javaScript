@@ -100,6 +100,27 @@ app.get('/mine', function(req, res) {
     
 })
 
+app.post('/receive-new-block', function(req, res){
+    const newBlock = req.body.newBlock;
+    const lastBlock = bitcoin.lastBlock();
+    const correctHash = lastBlock.hash === newBlock.previousBlockHash;
+    const correctIndex = lastBlock['index'] + 1 === newBlock['index'];
+
+    if (correctHash && correctIndex) {
+        bitcoin.push(newBlock);
+        bitcoin.pendingTransactions = [];
+        res,json({
+            note: 'new block received and accepted',
+            nreBlock: newBlock
+        });
+    } else {
+        res.json({
+            note : 'new block rejected',
+            neBlock: newBlock
+        });
+    }
+})
+
 // register a node and broadcast it the network
 app.post('/register-and-broadcast-node', function(req, res) {
 	const newNodeUrl = req.body.newNodeUrl;
